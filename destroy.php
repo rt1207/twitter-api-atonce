@@ -2,14 +2,12 @@
 ini_set('display_errors', 1);
 require_once('TwitterAPIExchange.php');
 
-/** Set access tokens here - see: https://dev.twitter.com/apps/ **/
-
 $settings = array(
-    'screen_name' => your_screen_name,
+    'screen_name' => your_screen_name, // owner of your app
     'consumer_key' => your_consumer_key,
-    'consumer_secret' => your_consumer_secret
+    'consumer_secret' => your_consumer_secret,
     'oauth_access_token' => your_oauth_access_token,
-    'oauth_access_token_secret' => your_oauth_access_token_secret,
+    'oauth_access_token_secret' => your_oauth_access_token_secret
 );
 
 
