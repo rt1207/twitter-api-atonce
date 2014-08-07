@@ -26,18 +26,18 @@ $id_arr = [];
 foreach ($json->ids as $key ) {
     array_push($id_arr, $key);
 }
-echo 'done'.PHP_EOL;
+echo count($id_arr).PHP_EOL;
 
 // ---------------- GET followers IDs ----------------
 echo 'GET followers/ids...';
 
 $url = 'https://api.twitter.com/1.1/followers/ids.json';
-$getfield = '?screen_name='.$settings['user'];
+$getfield = '?screen_name='.$settings['screen_name'];
 $obj = $twitter->setGetfield($getfield)
              ->buildOauth($url, $requestMethod)
              ->performRequest();
 $json = json_decode($obj);
-echo 'done'.PHP_EOL;
+echo count($json->ids).PHP_EOL;
 
 // ---------------- unfollow users who dont follow ----------------
 echo 'POST friendships/destroy';
@@ -59,4 +59,4 @@ foreach ($json->ids as $key) {
 }
 
 echo 'done'.PHP_EOL;
-echo 'unfollow '.$num." friends<br>";
+echo 'unfollow '.$num." friends".PHP_EOL;
