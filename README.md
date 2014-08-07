@@ -1,7 +1,7 @@
 Twitter - CLEAN_NONFOLLOWERS
 ---------------
 
-You can unfollow your non-followers by just one sentense.
+You can unfollow your non-followers by just one command.
 
 	php destroy.php
 
