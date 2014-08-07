@@ -10,6 +10,8 @@ $settings = array(
     'oauth_access_token_secret' => your_oauth_access_token_secret
 );
 
+// ---------------- GET friends IDs ----------------
+echo 'GET friends/ids...';
 
 $url = 'https://api.twitter.com/1.1/friends/ids.json';
 $getfield = '?screen_name='.$settings['screen_name'];
@@ -24,30 +26,37 @@ $id_arr = [];
 foreach ($json->ids as $key ) {
     array_push($id_arr, $key);
 }
+echo 'done'.PHP_EOL;
 
-// ---------------- unfollow users who dont follow ----------------
+// ---------------- GET followers IDs ----------------
+echo 'GET followers/ids...';
 
 $url = 'https://api.twitter.com/1.1/followers/ids.json';
-$requestMethod = 'GET';
 $getfield = '?screen_name='.$settings['user'];
 $obj = $twitter->setGetfield($getfield)
              ->buildOauth($url, $requestMethod)
              ->performRequest();
 $json = json_decode($obj);
+echo 'done'.PHP_EOL;
+
+// ---------------- unfollow users who dont follow ----------------
+echo 'POST friendships/destroy';
 
 $url = 'https://api.twitter.com/1.1/friendships/destroy.json';
 $requestMethod = 'POST';
 $twitter = new TwitterAPIExchange($settings);
 
+$num = 0;
 foreach ($json->ids as $key) {
-    if(!array_key_exists($key, $id_arr)){
+    echo '.';
+    if(!in_array($key, $id_arr)){
         $postfields = array('user_id' => $key);
         $obj = $twitter->setPostfields($postfields)
                      ->buildOauth($url, $requestMethod)
                      ->performRequest();
+    $num++;
     }
 }
 
-echo 'friends(past): '.count($id_arr)."<br>";
-echo 'followers: '.count($json->ids)."<br>";
-
+echo 'done'.PHP_EOL;
+echo 'unfollow '.$num." friends<br>";
