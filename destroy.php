@@ -11,6 +11,7 @@ $settings = array(
 );
 
 // ---------------- GET friends IDs ----------------
+echo '@'.$settings['screen_name'].PHP_EOL;
 echo 'GET friends/ids...';
 
 $url = 'https://api.twitter.com/1.1/friends/ids.json';
@@ -58,5 +59,5 @@ foreach ($json->ids as $key) {
     }
 }
 
-echo 'done'.PHP_EOL;
+echo PHP_EOL;
 echo 'unfollow '.$num." friends".PHP_EOL;
