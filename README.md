@@ -31,10 +31,14 @@ This Instructions in StackOverflow post http://stackoverflow.com/questions/12916
 Twitter - search & follow
 ---------------
 
+	php followback.php
+
 
 
 Twitter - search & retweet
 ---------------
+
+	php followback.php
 
 
 
