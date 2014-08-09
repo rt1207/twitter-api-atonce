@@ -39,7 +39,3 @@ Twitter - search & retweet
 ---------------
 
 	php retweet.php
-
-
-
-good luck
